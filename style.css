@@ -1,0 +1,2187 @@
+
+/* =========================================================
+   ANNIVERSARY WEBSITE
+   LIGHT ROMANTIC THEME
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #faf7f4;
+    color: #3d3434;
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.hidden {
+    display: none !important;
+}
+
+.screen {
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+/* =========================================================
+   404 ERROR SCREEN
+========================================================= */
+
+#error-screen {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #fffdfb 0%,
+            #faf5f2 55%,
+            #f4e9e7 100%
+        );
+}
+
+
+/* Soft background circles */
+
+#error-screen::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(218, 165, 165, 0.12);
+
+    top: -250px;
+    left: -200px;
+}
+
+#error-screen::after {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background: rgba(210, 183, 145, 0.10);
+
+    bottom: -250px;
+    right: -150px;
+}
+
+
+/* =========================================================
+   ERROR CONTAINER
+========================================================= */
+
+.error-container {
+    width: min(90%, 650px);
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* 404 */
+
+.error-code {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(110px, 20vw, 190px);
+
+    font-weight: 500;
+
+    line-height: 0.85;
+
+    letter-spacing: -8px;
+
+    color: #403535;
+
+    text-shadow:
+        0 10px 30px rgba(75, 50, 50, 0.08);
+}
+
+
+/* Heading */
+
+.error-container h1 {
+    margin-top: 35px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(26px, 5vw, 38px);
+
+    font-weight: 500;
+
+    color: #453939;
+}
+
+
+/* Message */
+
+.error-message {
+    margin-top: 12px;
+
+    color: #8c7e7e;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* Date */
+
+.error-date {
+    margin-top: 8px;
+
+    color: #b29e9e;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   SYSTEM STATUS
+========================================================= */
+
+.system-status {
+    margin: 45px auto 0;
+
+    width: min(100%, 440px);
+
+    padding: 22px;
+
+    text-align: left;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    border: 1px solid #eadbd8;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 15px 40px rgba(86, 57, 57, 0.06);
+}
+
+.system-status > p:first-child {
+    margin-bottom: 12px;
+
+    color: #746666;
+
+    font-size: 13px;
+}
+
+
+/* Loading */
+
+.loading-bar {
+    width: 100%;
+
+    height: 4px;
+
+    background: #eee1df;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.loading-progress {
+    width: 0%;
+
+    height: 100%;
+
+    background: #c98f91;
+
+    animation: loading 3s ease forwards;
+}
+
+@keyframes loading {
+
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+
+/* Loading text */
+
+.loading-text {
+    margin-top: 12px;
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    color: #aa9999;
+}
+
+.loading-text span {
+    color: #816f6f;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+#try-again-btn,
+#enter-story-btn,
+#unlock-btn,
+#replay-btn {
+
+    margin-top: 28px;
+
+    padding: 13px 26px;
+
+    border: 1px solid #d5aaaa;
+
+    border-radius: 30px;
+
+    background: #c98f91;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(170, 110, 110, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+#try-again-btn:hover,
+#enter-story-btn:hover,
+#unlock-btn:hover,
+#replay-btn:hover {
+
+    background: #bb7f82;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(170, 110, 110, 0.20);
+}
+
+
+/* =========================================================
+   SYSTEM SCAN - TERMINAL FIX
+========================================================= */
+
+#scan-screen {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#scan-screen.hidden {
+    display: none;
+}
+
+.scan-container {
+    width: 100%;
+    max-width: 650px;
+    padding: 30px;
+}
+
+.terminal {
+    width: 100%;
+    padding: 35px;
+    background: #171719;
+    color: #eeeeee;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    font-family: "Courier New", monospace;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.terminal-line {
+    margin: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.terminal-line.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.terminal-result {
+    margin: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.terminal-result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.status-ok {
+    color: #8fd3a8;
+    font-weight: 600;
+}
+
+.status-error {
+    color: #e89a9a;
+    font-weight: 600;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .scan-container {
+        padding: 20px;
+    }
+
+    .terminal {
+        padding: 25px 20px;
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   REVEAL SCREEN
+========================================================= */
+
+#reveal-screen {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffdfb 0%,
+            #faf3f1 60%,
+            #f5e8e6 100%
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.reveal-container {
+
+    width: min(90%, 700px);
+}
+
+.reveal-small {
+
+    color: #9d8888;
+
+    font-size: 15px;
+
+    margin-bottom: 18px;
+}
+
+.reveal-title {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(42px, 8vw, 78px);
+
+    font-weight: 500;
+
+    line-height: 1.1;
+
+    color: #403434;
+}
+
+.reveal-title span {
+
+    display: block;
+
+    color: #c18486;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   STORY
+========================================================= */
+
+#story {
+
+    background: #faf7f4;
+}
+
+
+/* =========================================================
+   STORY SECTIONS
+========================================================= */
+
+.story-section {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 20px;
+
+    position: relative;
+}
+
+
+/* Alternate section */
+
+.story-section:nth-child(even) {
+
+    background: #f7efed;
+}
+
+.section-content {
+
+    width: min(100%, 900px);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffdfb 0%,
+            #faf3f1 60%,
+            #f5e8e6 100%
+        );
+}
+
+.intro-content {
+
+    width: 100%;
+    max-width: 800px;
+}
+
+.eyebrow,
+.chapter-number {
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 11px;
+
+    color: #ae8c8d;
+}
+
+.intro-content h1 {
+
+    margin-top: 25px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(55px, 10vw, 110px);
+
+    font-weight: 500;
+
+    color: #403434;
+}
+
+.intro-text {
+
+    margin: 30px auto 0;
+
+    max-width: 500px;
+
+    color: #897b7b;
+
+    line-height: 1.9;
+}
+
+
+/* Anniversary number */
+
+.anniversary-counter {
+
+    margin-top: 60px;
+
+    display: flex;
+
+    align-items: baseline;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+.counter-number {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 90px;
+
+    color: #c18486;
+}
+
+.counter-label {
+
+    color: #998888;
+
+    font-size: 18px;
+}
+
+.intro-date {
+
+    margin-top: 15px;
+
+    color: #b09d9d;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CHAPTERS
+========================================================= */
+
+.story-section h2 {
+
+    margin-top: 20px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(42px, 7vw, 75px);
+
+    font-weight: 500;
+
+    color: #403434;
+}
+
+.section-content > p:not(.chapter-number) {
+
+    max-width: 600px;
+
+    margin: 25px auto 0;
+
+    color: #8b7e7e;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CHAPTER STORY MOMENTS
+========================================================= */
+
+.story-moment {
+
+    width: min(100%, 700px);
+
+    margin: 90px auto 0;
+
+    text-align: center;
+}
+
+.story-moment:first-of-type {
+
+    margin-top: 70px;
+}
+
+.moment-date {
+
+    margin: 0 0 15px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    color: #a98282;
+}
+
+.story-moment h3 {
+
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(30px, 5vw, 48px);
+
+    font-weight: 500;
+
+    color: #403434;
+}
+
+.story-moment p:not(.moment-date):not(.moment-emphasis) {
+
+    max-width: 600px;
+
+    margin: 22px auto 0;
+
+    color: #8b7e7e;
+
+    line-height: 1.9;
+
+    font-size: 16px;
+}
+
+.moment-emphasis {
+
+    margin-top: 28px;
+
+    color: #6f5e5e;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   FIRST MEET PHOTO
+========================================================= */
+
+.memory-photo {
+
+    width: min(100%, 420px);
+
+    margin: 40px auto 0;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #fffaf8;
+
+    box-shadow:
+        0 20px 50px rgba(80, 50, 50, 0.10);
+}
+
+.memory-photo img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+}
+
+/* =========================================================
+   TWO-PHOTO MEMORY PAIRS
+========================================================= */
+
+.memory-pair {
+
+    width: min(100%, 500px);
+
+    margin: 40px auto 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.memory-pair .memory-photo {
+
+    width: 100%;
+
+    margin: 0;
+
+    border-radius: 14px;
+}
+
+.memory-pair .memory-photo img {
+
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .memory-pair {
+
+        gap: 10px;
+    }
+
+    .memory-pair .memory-photo {
+
+        border-radius: 10px;
+    }
+
+}
+
+/* =========================================================
+   CHAPTER 04 — VIDEO MEMORIES
+========================================================= */
+
+.video-memory {
+
+    width: min(100%, 600px);
+
+    margin: 90px auto 0;
+
+    text-align: center;
+}
+
+.video-memory h3 {
+
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(30px, 5vw, 48px);
+
+    font-weight: 500;
+
+    color: #403434;
+}
+
+.memory-video {
+
+    width: min(100%, 500px);
+
+    margin: 40px auto 0;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #1f1a1a;
+
+    box-shadow:
+        0 20px 50px rgba(80, 50, 50, 0.12);
+}
+
+.memory-video video {
+    display: block;
+    width: 100%;
+    height: 300px;
+    max-height: 400px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.video-memory > p:not(.moment-date):not(.moment-emphasis) {
+
+    max-width: 500px;
+
+    margin: 25px auto 0;
+
+    color: #8b7e7e;
+
+    line-height: 1.9;
+
+    font-size: 16px;
+}
+
+.video-final {
+
+    margin-top: 110px;
+
+    padding-top: 70px;
+
+    border-top: 1px solid #e5d6d3;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .video-memory {
+
+        margin-top: 70px;
+    }
+
+    .memory-video {
+
+        border-radius: 12px;
+    }
+
+    .video-final {
+
+        margin-top: 85px;
+
+        padding-top: 50px;
+    }
+
+}
+/* =========================================================
+   BEGINNING HIGHLIGHT
+========================================================= */
+
+.story-beginning {
+
+    margin-top: 110px;
+
+    padding-top: 70px;
+
+    border-top: 1px solid #e5d6d3;
+}
+
+.highlight {
+
+    color: #a98282;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.15em;
+}
+
+
+/* =========================================================
+   CHAPTER CONTINUE
+========================================================= */
+
+.chapter-continue {
+
+    margin-top: 100px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: #a98282;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.continue-arrow {
+
+    font-size: 20px;
+
+    color: #a98282;
+}
+
+
+/* =========================================================
+   MEMORY PLACEHOLDERS
+========================================================= */
+
+.memory-placeholder,
+.gallery-placeholder {
+
+    margin: 50px auto 0;
+
+    width: min(100%, 750px);
+
+    min-height: 300px;
+
+    border: 1px solid #e5d6d3;
+
+    border-radius: 16px;
+
+    background: #fffaf8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #b19e9e;
+
+    font-size: 12px;
+
+    box-shadow:
+        0 15px 40px rgba(80, 50, 50, 0.05);
+}
+
+.memory-placeholder::before {
+
+    content: "Your first memory will live here";
+}
+
+.gallery-placeholder::before {
+
+    content: "Your memories will live here";
+}
+
+
+/* =========================================================
+   MEMORIES GRID
+========================================================= */
+
+.memories-grid {
+
+    margin-top: 50px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.memories-grid > * {
+
+    min-height: 220px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .story-moment {
+
+        margin-top: 70px;
+    }
+
+    .story-beginning {
+
+        margin-top: 85px;
+
+        padding-top: 50px;
+    }
+
+    .memory-photo {
+
+        border-radius: 12px;
+    }
+
+    .chapter-continue {
+
+        margin-top: 80px;
+    }
+
+}
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+#quiz-container {
+
+    margin: 50px auto 0;
+
+    max-width: 600px;
+
+    min-height: 250px;
+
+    border: 1px solid #e5d6d3;
+
+    border-radius: 16px;
+
+    padding: 40px;
+
+    background: #fffaf8;
+
+    box-shadow:
+        0 15px 40px rgba(80, 50, 50, 0.05);
+}
+
+.quiz-question {
+    text-align: center;
+}
+
+.quiz-question h3 {
+    margin: 20px 0 30px;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 500;
+    line-height: 1.5;
+    color: #403434;
+}
+
+.quiz-answers {
+    display: grid;
+    gap: 12px;
+}
+
+.quiz-answer {
+    width: 100%;
+    padding: 16px 20px;
+
+    border: 1px solid #e5d6d3;
+    border-radius: 12px;
+
+    background: #fff;
+    color: #6f5e5e;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+
+    cursor: pointer;
+    transition: background 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease;
+}
+
+.quiz-answer:hover:not(:disabled) {
+    background: #f8eeeb;
+    border-color: #c99d9d;
+}
+
+.quiz-answer:disabled {
+    cursor: default;
+}
+
+.quiz-answer.correct {
+    background: #edf5ed;
+    border-color: #8caf91;
+    color: #416b48;
+}
+
+.quiz-answer.incorrect {
+    background: #fbefef;
+    border-color: #d5a0a0;
+    color: #a35c5c;
+}
+
+.quiz-feedback {
+    min-height: 28px;
+    margin: 25px 0 0;
+
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.correct-feedback {
+    color: #658b69;
+}
+
+.incorrect-feedback {
+    color: #a66b6b;
+}
+
+
+/* =========================================================
+   QUIZ — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    #quiz-container {
+        padding: 25px 18px;
+    }
+
+    .quiz-answer {
+        padding: 14px 12px;
+        font-size: 14px;
+    }
+}
+
+/* =========================================================
+   SECRET VAULT
+========================================================= */
+
+.secret-box {
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+
+    margin: 50px auto 0;
+    padding: 45px 30px;
+
+    border: 1px solid #e5d6d3;
+    border-radius: 16px;
+
+    background: #fffaf8;
+
+    box-shadow:
+        0 15px 40px rgba(80, 50, 50, 0.05);
+}
+
+.lock-icon {
+    font-size: 35px;
+}
+
+.secret-box h3 {
+    margin-top: 20px;
+
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-weight: 500;
+
+    color: #453838;
+}
+
+.secret-box p {
+    margin-top: 10px;
+
+    color: #978888;
+    font-size: 13px;
+}
+
+.secret-box input {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    margin-top: 25px;
+    padding: 13px 15px;
+
+    background: #fffdfc;
+
+    border: 1px solid #dfcfcc;
+    border-radius: 8px;
+
+    outline: none;
+    color: #453838;
+    text-align: center;
+}
+
+.secret-box input:focus {
+    border-color: #c18486;
+
+    box-shadow:
+        0 0 0 3px rgba(193, 132, 134, 0.10);
+}
+
+/* =========================================================
+   LOVE LETTER
+========================================================= */
+
+#love-letter {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffdfb,
+            #f8eeec 100%
+        );
+}
+
+.letter-container {
+
+    width: min(100%, 700px);
+
+    text-align: center;
+}
+
+.letter-container h2 {
+
+    margin-top: 20px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(42px, 7vw, 70px);
+
+    font-weight: 500;
+
+    color: #403434;
+}
+
+#letter-content {
+
+    margin-top: 50px;
+
+    padding: 45px;
+
+    min-height: 300px;
+
+    border: 1px solid #e5d6d3;
+
+    border-radius: 16px;
+
+    background: #fffaf8;
+
+    color: #887a7a;
+
+    line-height: 2;
+
+    text-align: left;
+
+    box-shadow:
+        0 15px 40px rgba(80, 50, 50, 0.05);
+}
+
+
+/* =========================================================
+   FINAL MESSAGE
+========================================================= */
+
+#final {
+
+    background: #f8efed;
+
+    text-align: center;
+}
+
+.final-content {
+
+    width: min(90%, 800px);
+}
+
+.final-content > p {
+
+    margin: 20px 0;
+
+    color: #9b8989;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(20px, 4vw, 30px);
+}
+
+.final-content h1 {
+
+    margin: 60px 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 8vw, 85px);
+
+    font-weight: 500;
+
+    color: #403434;
+}
+
+.final-repeat {
+
+    opacity: 0;
+}
+
+
+/* =========================================================
+   ENDING
+========================================================= */
+
+#ending {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fff9f7 0%,
+            #f8eeec 60%,
+            #f2e3e1 100%
+        );
+
+    text-align: center;
+}
+
+.ending-content {
+
+    width: min(90%, 800px);
+}
+
+.ending-content h1 {
+
+    margin-top: 30px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 8vw, 90px);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    color: #403434;
+}
+
+.ending-content > p:not(.eyebrow) {
+
+    margin-top: 20px;
+
+    color: #938282;
+
+    font-size: 16px;
+}
+
+.heart {
+
+    margin-top: 50px;
+
+    font-size: 50px;
+
+    color: #c18486;
+}
+
+#replay-btn {
+
+    margin-top: 45px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .error-code {
+
+        letter-spacing: -5px;
+    }
+
+    .system-status {
+
+        padding: 17px;
+    }
+
+    .terminal {
+
+        padding: 25px;
+
+        font-size: 12px;
+    }
+
+    .story-section {
+
+        padding: 80px 20px;
+    }
+
+    .memories-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .memory-placeholder,
+    .gallery-placeholder {
+
+        min-height: 240px;
+    }
+
+    #letter-content {
+
+        padding: 25px;
+    }
+    
+}
+
+/* =========================================================
+   CINEMATIC SCREEN TRANSITIONS
+========================================================= */
+
+.fade-in {
+    animation: screenFadeIn 0.9s ease forwards;
+}
+
+.fade-out {
+    animation: screenFadeOut 0.7s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes screenFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes screenFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =========================================================
+   404 SUBTLE GLITCH
+========================================================= */
+
+#error-screen.glitch .error-code {
+    animation: subtleGlitch 0.6s ease;
+}
+
+@keyframes subtleGlitch {
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-2px);
+    }
+
+    40% {
+        transform: translateX(2px);
+    }
+
+    60% {
+        transform: translateX(-1px);
+    }
+
+    80% {
+        transform: translateX(1px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+
+
+/* =========================================================
+   REVEAL SCREEN
+========================================================= */
+
+#reveal-screen h2 {
+    animation: revealText 1.2s ease both;
+}
+
+#reveal-screen p {
+    animation: revealText 1.2s ease 0.25s both;
+}
+
+#reveal-screen .primary-button {
+    animation: revealText 1.2s ease 0.5s both;
+}
+
+@keyframes revealText {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   STORY INTRO
+========================================================= */
+
+#intro {
+    animation: introAppear 1.4s ease both;
+}
+
+@keyframes introAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   ANNIVERSARY INTRO
+========================================================= */
+
+.anniversary-intro {
+    height: 100vh;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(230, 190, 190, 0.20),
+            transparent 45%
+        ),
+        #fbf7f2;
+
+    padding: 30px 25px;
+    overflow: hidden;
+}
+
+
+
+
+/* Small heading */
+
+.intro-label {
+    margin: 0 0 25px;
+
+    font-size: 11px;
+    letter-spacing: 4px;
+    font-weight: 600;
+
+    color: #a47778;
+
+    opacity: 0;
+    animation: introFadeUp 1s ease 0.2s forwards;
+}
+
+
+/* =========================================================
+   DATE REVEAL
+========================================================= */
+
+.date-reveal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 55px;
+
+    opacity: 0;
+    animation: introFadeUp 1.2s ease 0.45s forwards;
+}
+
+.date-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date-day {
+    font-family: "Playfair Display", serif;
+   font-size: clamp(60px, 8vw, 90px);
+    line-height: 0.9;
+    font-weight: 500;
+
+    color: #30282a;
+}
+
+.date-month {
+    margin-top: 15px;
+
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 600;
+
+    color: #a47778;
+}
+
+.date-year {
+    margin-top: 5px;
+
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+
+    color: #6e5b5d;
+}
+
+
+/* Arrow */
+
+.date-arrow {
+    font-size: 25px;
+    color: #c98f91;
+
+    opacity: 0;
+    animation:
+        arrowAppear 0.8s ease 1.5s forwards;
+}
+
+.date-arrow span {
+    display: block;
+    animation: arrowMove 2s ease-in-out 2s infinite;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.intro-divider {
+    width: 0;
+    height: 1px;
+
+     margin: 30px auto 25px;
+    background: #d9babb;
+
+    animation: dividerGrow 1s ease 1.8s forwards;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.intro-small {
+    margin: 0;
+
+    font-size: 14px;
+    letter-spacing: 0.5px;
+
+    color: #806e70;
+
+    opacity: 0;
+    animation: introFadeUp 1s ease 2.1s forwards;
+}
+
+
+.anniversary-intro h1 {
+     margin: 10px 0 10px;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 8vw, 85px);
+    line-height: 1;
+
+    font-weight: 500;
+    color: #30282a;
+
+    opacity: 0;
+    animation: introFadeUp 1.1s ease 2.35s forwards;
+}
+
+.anniversary-intro h1 span {
+    color: #c98f91;
+}
+
+
+.intro-message {
+    margin: 0 auto;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(18px, 3vw, 25px);
+    line-height: 1.7;
+
+    font-style: italic;
+
+    color: #806e70;
+
+    opacity: 0;
+    animation: introFadeUp 1s ease 2.7s forwards;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+#begin-story-btn {
+    margin-top: 40px;
+
+    opacity: 0;
+    animation: introFadeUp 1s ease 3.1s forwards;
+}
+
+#begin-story-btn span {
+    margin-left: 8px;
+
+    transition: transform 0.3s ease;
+}
+
+#begin-story-btn:hover span {
+    transform: translateY(3px);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes introFadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes dividerGrow {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100px;
+    }
+
+}
+
+
+@keyframes arrowAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes arrowMove {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .anniversary-intro {
+        padding: 70px 20px;
+    }
+
+    .intro-label {
+        font-size: 9px;
+        letter-spacing: 3px;
+        margin-bottom: 35px;
+    }
+
+    .date-reveal {
+        gap: 20px;
+    }
+
+    .date-day {
+        font-size: 65px;
+    }
+
+    .date-month {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .date-year {
+        font-size: 19px;
+    }
+
+    .date-arrow {
+        font-size: 20px;
+    }
+
+    .intro-divider {
+        margin-top: 45px;
+    }
+
+}
+
+/* =========================================================
+   CHAPTER 06 — READ MY LETTER BUTTON
+========================================================= */
+
+#read-letter-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 25px;
+    padding: 15px 30px;
+
+    border: 1px solid #b98282;
+    border-radius: 50px;
+
+    background: #b98282;
+    color: #ffffff;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#read-letter-btn:hover {
+    background: #a56f6f;
+    box-shadow: 0 8px 20px rgba(165, 111, 111, 0.2);
+}
+
+#read-letter-btn span {
+    font-size: 18px;
+}
+
+/* OUR STORY BUTTON */
+#begin-story-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 15px 30px;
+    margin-top: 25px;
+
+    border: 1px solid #b98282;
+    border-radius: 50px;
+
+    background: #b98282;
+    color: #ffffff;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: background 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+#begin-story-btn:hover {
+    background: #a56f6f;
+    box-shadow: 0 8px 20px rgba(165, 111, 111, 0.2);
+}
+
+#begin-story-btn span {
+    font-size: 18px;
+}
+
+/* =========================================================
+   CHAPTER 07 — LOVE LETTER LAYOUT
+========================================================= */
+
+#love-letter .letter-container {
+    width: min(100% - 40px, 700px);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#letter-content {
+    width: 100%;
+    max-width: 600px;
+    margin: 35px auto 0;
+    box-sizing: border-box;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   CHAPTER 07 — CONTINUE BUTTON
+========================================================= */
+
+#letter-continue-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 30px;
+    padding: 15px 30px;
+
+    border: 1px solid #b98282;
+    border-radius: 50px;
+
+    background: #b98282;
+    color: #ffffff;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#letter-continue-btn:hover {
+    background: #a56f6f;
+    box-shadow: 0 8px 20px rgba(165, 111, 111, 0.2);
+}
+
+#letter-continue-btn span {
+    font-size: 18px;
+}
+
+
+/* MOBILE */
+@media (max-width: 600px) {
+    #love-letter .letter-container {
+        width: calc(100% - 30px);
+    }
+
+    #letter-content {
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   MOBILE FIX — SECRET VAULT
+========================================================= */
+
+#secret,
+#secret .section-content,
+#secret .secret-box {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+#secret .section-content {
+    width: 100%;
+    min-width: 0;
+}
+
+#secret .secret-box {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#secret .secret-box input {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#secret .secret-box button {
+    max-width: 100%;
+}
+
+/* =========================================================
+   SECRET VAULT — MOBILE FIX
+========================================================= */
+
+@media (max-width: 600px) {
+
+    #secret {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #secret .section-content {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    #secret .secret-box {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 450px;
+        padding: 25px 18px;
+        margin: 35px auto 0;
+    }
+
+    #secret .secret-box h3 {
+        font-size: clamp(20px, 5.5vw, 24px);
+        overflow-wrap: anywhere;
+    }
+
+    #secret .secret-box input {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #secret .secret-box button {
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+}
+
+/* CHAPTER 06 — SECRET VAULT KEYPAD */
+
+#secret .secret-keypad {
+    width: 100%;
+    max-width: 250px;
+    margin: 25px auto 0;
+}
+
+#secret #secret-password {
+    display: block;
+    width: 100%;
+    height: 46px;
+    box-sizing: border-box;
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    border: 1px solid #dfcfcc;
+    border-radius: 10px;
+    background: #fffaf8;
+    color: #453838;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+#secret .keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+#secret .keypad-grid .keypad-button {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eadbd8;
+    border-radius: 50%;
+    background: #fffdfc;
+    color: #c18486;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(80, 50, 50, 0.08);
+}
+
+#secret .keypad-grid .keypad-action {
+    background: #c18486;
+    color: #fff;
+    border-color: #c18486;
+}
+
+#secret .keypad-grid .keypad-button:hover {
+    background: #f6e9e6;
+}
+
+#secret .keypad-grid .keypad-action:hover {
+    background: #ad7376;
+}
+
+#secret #password-message {
+    margin-top: 15px;
+    text-align: center;
+    color: #a56f73;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    #secret .secret-keypad {
+        max-width: 270px;
+    }
+
+    #secret .keypad-grid {
+        gap: 10px;
+    }
+}
