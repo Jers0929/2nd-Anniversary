@@ -727,7 +727,7 @@ input {
 .memory-photo img {
     display: block;
     width: 100%;
-    height: 350px;
+    height: 400px;
     object-fit: cover;
     object-position: center;
 }
