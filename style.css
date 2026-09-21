@@ -725,12 +725,11 @@ input {
 }
 
 .memory-photo img {
-
     display: block;
-
     width: 100%;
-
-    height: 500px;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* =========================================================
